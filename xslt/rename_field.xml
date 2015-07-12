@@ -1,0 +1,15 @@
+<!-- Last modified 07/12/2015 by greenertux (Tristan Hoffmann)
+This xslt renames a single field. In this example all <content name="textBody"> elements are renamed to <content name="snippet">
+
+Paste this code into the free xslt section of the normalization converter. -->
+
+<xsl:template match="node( ) | @*">
+  <xsl:copy>
+    <xsl:apply-templates select="@* | node( )" />
+  </xsl:copy>
+</xsl:template>
+<xsl:template match="content[@name='textBody']">
+  <content name="snippet">
+    <xsl:value-of select="." />
+  </content>
+</xsl:template>
